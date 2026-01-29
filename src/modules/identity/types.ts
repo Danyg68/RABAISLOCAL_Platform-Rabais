@@ -13,3 +13,16 @@ export interface AuthState {
     user: UserProfile | null;
     error: Error | null;
 }
+
+export interface MerchantProfile {
+    id: string; // Same as auth.uid
+    business_name: string;
+    description?: string;
+    address?: string;
+    phone?: string;
+    website?: string;
+    logo_url?: string;
+    cover_image_url?: string;
+    validation_status?: 'PENDING' | 'VALIDATED' | 'REJECTED';
+}
+

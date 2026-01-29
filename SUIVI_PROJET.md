@@ -1,3 +1,4 @@
+
 # 🚀 Suivi d'Avancement - Plateforme RabaisLocal
 
 Ce document sert de tableau de bord pour suivre le développement modulaire de la plateforme.
@@ -49,8 +50,9 @@ Une tâche barrée (~~Tâche~~) est terminée et validée en production.
     - [x] Vue d'ensemble V1 (Stats placeholder)
     - [x] Bouton d'accès création d'offre
 - [x] **Dashboard Consommateur**
-    - [x] Vue Solde V1
-    - [x] Placeholder QR Code
+    - [x] Vue Solde V1 (Connectée au Wallet)
+    - [x] QR Code Membre (Dynamique)
+    - [x] Historique des transactions
 - [ ] **Dashboard Admin**
     - [ ] Vue globale des utilisateurs
 
@@ -58,37 +60,153 @@ Une tâche barrée (~~Tâche~~) est terminée et validée en production.
 
 ## 🔴 PHASE 3 : Cœur du Métier (Rabais & Transactions)
 
-### 📦 MODULE 3 : Gestion des Offres (Rabais) (PROCHAINE ÉTAPE)
-- [ ] **Base de Données**
-    - [ ] Tables `offers`, `categories`, `offer_images`
-- [ ] **Gestion Commerçant**
-    - [ ] Créer / Modifier / Supprimer une offre
-    - [ ] Définir les règles (%, montant, conditions)
-- [ ] **Catalogue Public**
-    - [ ] Page de recherche / Filtres
-    - [ ] Page détail d'une offre
+### 📦 MODULE 3 : Gestion des Offres (Terminé)
+- [x] **Base de Données**
+    - [x] Tables `offers`, `categories`, `offer_images`
+- [x] **Gestion Commerçant**
+    - [x] Créer une offre (V1)
+    - [x] Modifier une offre
+    - [x] Supprimer une offre (V1)
+    - [x] Définir les règles (%, montant, conditions)
+- [x] **Catalogue Public**
+    - [x] Page de recherche / Filtres (`/offres`)
+    - [x] Page détail d'une offre (`/offres/[id]`)
 
-### 📦 MODULE 4 : Transactions & Wallet
-- [ ] **Base de Données**
-    - [ ] Tables `transactions`, `wallet_ledger`
-- [ ] **Le Système de Scan**
-    - [ ] Scanner QR Code (Côté Commerçant)
-    - [ ] Validation de transaction
-- [ ] **Mouvements financiers**
-    - [ ] Crédit de points
-    - [ ] Débit/Utilisation de rabais
+### 📦 MODULE 3-BIS : Gestion des Coupons (NOUVEAU - Terminé)
+- [x] **Logique d'achat/réclamation**
+    - [x] Table `coupons` avec code unique
+    - [x] Fonction `claim_offer` (RPC) avec limite de quantité
+- [x] **Interface Consommateur**
+    - [x] Bouton "Obtenir ce rabais" fonctionnel
+    - [x] Affichage des coupons actifs avec QR Code (`/dashboard/consumer`)
+
+### 📦 MODULE 4 : Transactions & Wallet (Terminé V1)
+- [x] **Base de Données**
+    - [x] Tables `transactions`, `wallet_ledger`
+    - [x] Triggers automatiques
+- [x] **Le Système de Scan (Validation Coupons)**
+    - [x] Interface de scan (`/merchant/scan`)
+    - [x] Vérification Code Unique `redeem_coupon` (RPC)
+    - [x] Validation (Passage de ACTIVE à USED)
+    - [x] Feedback visuel immédiat (Succès/Erreur)
+- [x] **Mouvements financiers**
+    - [x] Crédit de points (Backend)
+    - [x] Débit/Utilisation de rabais (Backend)
+    - [x] Visualisation Solde (Frontend Consommateur)
 
 ---
 
 ## ⚫ PHASE 4 : Optimisations & Lancement
 
-### 📦 MODULE 5 : Administration Avancée
-- [ ] Validation manuelle des Commerçants
+### 📦 MODULE 5 : Administration Avancée (En Cours)
+- [x] **Base de Données**
+    - [x] Statut validation commerçant
+    - [x] Policies `offers`
+- [x] **Interface Admin ( `/dashboard/admin` )**
+    - [x] Vue globale Commerçants
+    - [x] Actions Valider/Rejeter
+### 📦 MODULE 5 : Administration Avancée (En Cours)
+- [x] **Base de Données**
+    - [x] Statut validation commerçant
+    - [x] Policies `offers`
+- [x] **Interface Admin ( `/dashboard/admin` )**
+    - [x] Vue globale Commerçants
+    - [x] Actions Valider/Rejeter
 - [ ] Gestion des litiges
+- [ ] Logs & Audit (Voir Module 22)
 
-### 📦 MODULE 6 : Notifications & Emails
-- [ ] Emails transactionnels (Bienvenue, Confirmation achat)
-- [ ] Notifications in-app
+---
+
+## 🚀 PHASE 5 : EXTENSIONS PRIORITAIRES (Critiques)
+
+### � PROCHAINE ÉTAPE : DÉMARRER ICI
+### �📦 MODULE 7 : Système de Crédits (Visible)
+*Objectif : Système de crédits central et compréhensible par offre.*
+- [ ] **Base de Données** : Ajout `credit_cost` sur la table `offers`.
+- [ ] **Logique Métier** : Calcul dynamique du coût (Ex: 0-29$ = 1 crédit, 30-89$ = 2 crédits...).
+- [ ] **Configuration** : Paramètres modifiables par l'Admin (Module 21).
+- [ ] **Interface** : Affichage clair du coût en crédits sur les listes et détails.
+- [ ] **Distinction** : Offres "Gratuites" vs "À Crédit".
+
+### 📦 MODULE 8 : Notifications & Emails (Engagement)
+*Objectif : Engagement et rétention.*
+- [ ] **Emails Transactionnels** : Bienvenue, Coupon obtenu, Rappel expiration, Coupon utilisé.
+- [ ] **Notifications In-App** : "Nouvelle promotion" en temps réel.
+- [ ] **Ciblage** : Envoi par région (Rayon 25km) et catégorie.
+- [ ] **Planification** : Envoi quotidien/hebdomadaire configurable.
+
+### 📦 MODULE 9 : Rareté & Expiration (Action)
+*Objectif : Déclencher l’action via l'urgence.*
+- [ ] **Front** : Countdown visible, Date d'expiration explicite.
+- [ ] **États** : Actif / Bientôt expiré / Expiré (Visuel distinct).
+- [ ] **Back** : Blocage automatique des coupons/offres expirés.
+
+---
+
+## 🔮 PHASE 6 : STRATÉGIE & DIFFÉRENCIATION
+
+### 📦 MODULE 10 : Profil Consommateur Évolué
+- [ ] Préférences : Catégories, Distance, Types d'offres.
+- [ ] Gestion fine des notifications.
+- [ ] Historique exploitable.
+
+### 📦 MODULE 11 : Recommandations (IA Light)
+- [ ] Offres similaires.
+- [ ] Offres populaires locales.
+- [ ] Suggestions basées sur l'historique.
+
+### 📦 MODULE 12 : Gamification
+- [ ] Badges et Niveaux (Exploration, Économies).
+- [ ] Défis mensuels.
+- [ ] Indicateurs de progression ludiques.
+
+### 📦 MODULE 13 : Carte Membre & Avantages
+- [ ] Section dédiée "Ma Carte Membre" avec QR unique (≠ QR Coupon).
+- [ ] Avantages récurrents/permanents par région/commerçant.
+
+---
+
+## ⭐ PHASE 7 : UX & CONFIANCE
+
+### 📦 MODULE 14 : Preuve Sociale
+- [ ] Compteurs : "Coupons utilisés aujourd'hui", "Membres actifs".
+- [ ] Stats locales par région.
+
+### 📦 MODULE 15 : Aide & Compréhension
+- [ ] FAQ courte et "Comment ça marche".
+- [ ] Vidéo explicative courte.
+
+---
+
+## 🛠️ PHASE 8 : COMPLÉMENTS & ADMIN AVANCÉ
+
+### 📦 MODULE 16 : Historique & Rapports (Conso)
+- [ ] Total économisé (mois/vie).
+- [ ] Comparatif Crédits vs Économies.
+
+### 📦 MODULE 17 : Favoris & Listes
+- [ ] Sauvegarder offres / Suivre commerçants.
+- [ ] Alertes sur nouveaux ajouts des favoris.
+
+### 📦 MODULE 18 : Feedback & Signalement
+- [ ] Feedback Conso -> Commerçant (Problème, offre invalide).
+- [ ] Feedback Commerçant -> Conso (No-show, abus).
+
+### 📦 MODULE 19 : Alertes Intelligentes
+- [ ] "Nouveau commerce dans votre zone".
+- [ ] "Offre -50% dans vos favoris".
+
+### 📦 MODULE 20 : Mode Découverte
+- [ ] Suggestions de commerces moins connus.
+- [ ] Parcours de découverte.
+
+### 📦 MODULE 21 : Paramètres Globaux (Super Admin)
+- [ ] Gestion centralisée des règles (Seuils crédits, Distances, Fréquences emails).
+- [ ] Activation/Désactivation modules.
+
+### 📦 MODULE 22 : Journal d’Audit & Logs
+- [ ] Traçabilité des validations et actions critiques.
+- [ ] Historique système pour support.
 
 ---
 
