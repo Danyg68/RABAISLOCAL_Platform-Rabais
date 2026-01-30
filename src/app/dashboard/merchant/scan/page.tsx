@@ -41,6 +41,13 @@ export default function TerminalPage() {
                 setSuccess(true);
                 // @ts-ignore - On stocke les infos de l'offre dans 'customer' temporairement pour l'affichage
                 setCustomer(result);
+
+                // Trigger Email Notification (Background)
+                fetch('/api/emails/coupon-redeemed', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ couponId: scannedId })
+                }).catch(err => console.error("Failed to send redemption email", err));
             } else {
                 setError(result.message || 'Code invalide ou erreur inconnue.');
                 setCustomer(null);

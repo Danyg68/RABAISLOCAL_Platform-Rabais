@@ -119,27 +119,28 @@ Une tâche barrée (~~Tâche~~) est terminée et validée en production.
 
 ## 🚀 PHASE 5 : EXTENSIONS PRIORITAIRES (Critiques)
 
-### � PROCHAINE ÉTAPE : DÉMARRER ICI
-### �📦 MODULE 7 : Système de Crédits (Visible)
+### 🟢 PROCHAINE ÉTAPE : MODULE 16 (Voir bas de page) - REPRENDRE ICI
+> **Note Session:** Base de données prête (`saved_amount`). Prochaine tâche : Afficher la cagnotte économies sur le Dashboard.
+### 📦 MODULE 7 : Système de Crédits (Visible)
 *Objectif : Système de crédits central et compréhensible par offre.*
-- [ ] **Base de Données** : Ajout `credit_cost` sur la table `offers`.
-- [ ] **Logique Métier** : Calcul dynamique du coût (Ex: 0-29$ = 1 crédit, 30-89$ = 2 crédits...).
+- [x] **Base de Données** : Ajout `credit_cost` sur la table `offers`.
+- [x] **Logique Métier** : Calcul dynamique du coût (Ex: 0-29$ = 1 crédit, 30-89$ = 2 crédits...).
 - [ ] **Configuration** : Paramètres modifiables par l'Admin (Module 21).
-- [ ] **Interface** : Affichage clair du coût en crédits sur les listes et détails.
-- [ ] **Distinction** : Offres "Gratuites" vs "À Crédit".
+- [x] **Interface** : Affichage clair du coût en crédits sur les listes et détails.
+- [x] **Distinction** : Offres "Gratuites" vs "À Crédit".
 
 ### 📦 MODULE 8 : Notifications & Emails (Engagement)
 *Objectif : Engagement et rétention.*
-- [ ] **Emails Transactionnels** : Bienvenue, Coupon obtenu, Rappel expiration, Coupon utilisé.
+- [x] **Emails Transactionnels** : Bienvenue, Coupon obtenu, Rappel expiration, Coupon utilisé.
 - [ ] **Notifications In-App** : "Nouvelle promotion" en temps réel.
 - [ ] **Ciblage** : Envoi par région (Rayon 25km) et catégorie.
 - [ ] **Planification** : Envoi quotidien/hebdomadaire configurable.
 
 ### 📦 MODULE 9 : Rareté & Expiration (Action)
 *Objectif : Déclencher l’action via l'urgence.*
-- [ ] **Front** : Countdown visible, Date d'expiration explicite.
-- [ ] **États** : Actif / Bientôt expiré / Expiré (Visuel distinct).
-- [ ] **Back** : Blocage automatique des coupons/offres expirés.
+- [x] **Front** : Countdown visible, Date d'expiration explicite.
+- [x] **États** : Actif / Bientôt expiré / Expiré (Visuel distinct).
+- [x] **Back** : Blocage automatique des coupons/offres expirés.
 
 ---
 
@@ -180,9 +181,11 @@ Une tâche barrée (~~Tâche~~) est terminée et validée en production.
 
 ## 🛠️ PHASE 8 : COMPLÉMENTS & ADMIN AVANCÉ
 
+### 📍 PROCHAINE ÉTAPE (PRIORISÉ)
 ### 📦 MODULE 16 : Historique & Rapports (Conso)
-- [ ] Total économisé (mois/vie).
-- [ ] Comparatif Crédits vs Économies.
+- [x] **Base de Données** : Colonne `saved_amount` & Calcul automatique lors du scan.
+- [ ] **Front** : Afficher "Total économisé" sur Dashboard Consommateur.
+- [ ] **Front** : Liste historique avec détails économies.
 
 ### 📦 MODULE 17 : Favoris & Listes
 - [ ] Sauvegarder offres / Suivre commerçants.

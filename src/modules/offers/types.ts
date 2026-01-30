@@ -21,6 +21,7 @@ export type Offer = {
     start_date?: string; // ISO String
     end_date?: string; // ISO String
     image_url?: string;
+    credit_cost: number;
     is_active: boolean;
     created_at: string;
     updated_at: string;

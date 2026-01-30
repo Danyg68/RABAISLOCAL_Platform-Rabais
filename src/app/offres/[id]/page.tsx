@@ -83,6 +83,14 @@ export default function OfferDetailsPage() {
 
         if (result.success) {
             setIsClaimed(true);
+            // Trigger Email Sending (Fire and forget, don't block UI)
+            if (result.coupon_id) {
+                fetch('/api/emails/send-coupon', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ couponId: result.coupon_id })
+                }).catch(err => console.error("Failed to send email confirmation", err));
+            }
         } else {
             setErrorMsg(result.message || "Erreur inconnue");
         }
@@ -157,9 +165,37 @@ export default function OfferDetailsPage() {
                             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">{offer.title}</h1>
 
                             {offer.end_date && (
-                                <div className="inline-flex items-center text-sm font-medium text-amber-600 bg-amber-50 px-3 py-1 rounded-full mb-6">
-                                    <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    Expire le {format(new Date(offer.end_date), 'dd MMMM yyyy', { locale: fr })}
+                                <div className="flex items-center gap-3 mb-6">
+                                    {/* Smart Date Display */}
+                                    {(() => {
+                                        const endDate = new Date(offer.end_date);
+                                        const now = new Date();
+                                        const diffTime = endDate.getTime() - now.getTime();
+                                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                                        if (diffTime < 0) {
+                                            return (
+                                                <div className="inline-flex items-center text-sm font-bold text-gray-500 bg-gray-100 px-4 py-2 rounded-full border border-gray-200">
+                                                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                    Offre expirée le {format(endDate, 'dd MMM yyyy', { locale: fr })}
+                                                </div>
+                                            );
+                                        } else if (diffDays <= 3) {
+                                            return (
+                                                <div className="inline-flex items-center text-sm font-bold text-red-600 bg-red-50 px-4 py-2 rounded-full animate-pulse border border-red-100">
+                                                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                    Dépêchez-vous ! Expire dans {diffDays} jour{diffDays > 1 ? 's' : ''}
+                                                </div>
+                                            );
+                                        } else {
+                                            return (
+                                                <div className="inline-flex items-center text-sm font-medium text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
+                                                    <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                    Expire le {format(endDate, 'dd MMMM yyyy', { locale: fr })}
+                                                </div>
+                                            );
+                                        }
+                                    })()}
                                 </div>
                             )}
 
@@ -184,6 +220,16 @@ export default function OfferDetailsPage() {
 
                         {/* Action Footer */}
                         <div className="pt-6 mt-6 md:mt-0 relative z-10">
+
+                            {/* Cost Display */}
+                            <div className="flex items-center justify-between mb-4 bg-amber-50 rounded-lg p-4 border border-amber-100">
+                                <span className="text-amber-800 font-medium">Coût pour débloquer :</span>
+                                <span className="flex items-center font-bold text-amber-700 text-xl">
+                                    <svg className="w-5 h-5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" /></svg>
+                                    {offer.credit_cost} Crédit{offer.credit_cost > 1 ? 's' : ''}
+                                </span>
+                            </div>
+
                             {!isClaimed ? (
                                 <button
                                     onClick={handleClaim}

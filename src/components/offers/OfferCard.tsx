@@ -42,6 +42,12 @@ export default function OfferCard({ offer }: OfferCardProps) {
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-red-600 font-extrabold px-4 py-1.5 rounded-full text-sm shadow-sm ring-1 ring-red-100">
                         {discountLabel}
                     </div>
+
+                    {/* Credit Cost Badge */}
+                    <div className="absolute top-4 left-4 bg-amber-100/90 backdrop-blur-sm text-amber-800 font-bold px-3 py-1.5 rounded-full text-xs shadow-sm ring-1 ring-amber-200 flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" /></svg>
+                        {offer.credit_cost} Crédit{offer.credit_cost > 1 ? 's' : ''}
+                    </div>
                 </div>
 
                 {/* Content Section */}
@@ -51,9 +57,33 @@ export default function OfferCard({ offer }: OfferCardProps) {
                             Offre
                         </span>
                         {offer.end_date && (
-                            <span className="text-xs text-gray-500">
-                                Expire le {format(new Date(offer.end_date), 'dd MMM', { locale: fr })}
-                            </span>
+                            // Logic for urgency
+                            (() => {
+                                const endDate = new Date(offer.end_date);
+                                const now = new Date();
+                                const diffTime = endDate.getTime() - now.getTime();
+                                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                                if (diffTime < 0) {
+                                    return (
+                                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 text-gray-500 uppercase">
+                                            Expiré
+                                        </span>
+                                    );
+                                } else if (diffDays <= 3) {
+                                    return (
+                                        <span className="text-xs font-bold px-2 py-0.5 rounded bg-red-100 text-red-600 animate-pulse">
+                                            ⏳ Expire bientôt !
+                                        </span>
+                                    );
+                                } else {
+                                    return (
+                                        <span className="text-xs text-gray-500">
+                                            Expire le {format(endDate, 'dd MMM', { locale: fr })}
+                                        </span>
+                                    );
+                                }
+                            })()
                         )}
                     </div>
 
