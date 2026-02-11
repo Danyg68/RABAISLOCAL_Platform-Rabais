@@ -213,6 +213,33 @@ Une tâche barrée (~~Tâche~~) est terminée et validée en production.
 
 ---
 
+---
+
+## 🏙️ PHASE 9 : CONTENU & SEO LOCAL
+
+### 📦 MODULE 23 : Pages Villes & Territoires (Nouveau - Terminé V2 Dynamique)
+*Objectif : Créer des pages institutionnelles pour chaque ville, optimisées SEO et maintenance technique.*
+- [x] **Architecture Dynamique (Next.js + Supabase)**
+    - [x] Route dynamique `/villes/[slug]` (Plus de dossiers statiques)
+    - [x] Base de données `cities` (News, Events, Places centralisés)
+    - [x] Script de migration de données (JSON -> SQL)
+- [x] **Contenu & Design**
+    - [x] Template "Institutionnel" React/Tailwind
+    - [x] Sections dynamiques (Actus, Événements, Lieux)
+    - [x] Migration complète : **Trois-Rivières** (Données en DB)
+    - [x] Support technique pour l'export statique (SSG)
+
+### 📦 MODULE 24 : Catalogue & Recherche Villes (À FAIRE)
+*Objectif : Permettre aux utilisateurs de trouver leur ville.*
+- [ ] **Page Index `/villes`**
+    - [ ] Liste de toutes les villes disponibles (Grid ou Liste).
+    - [ ] Barre de recherche (Filtrage instantané).
+    - [ ] Carte interactive (Optionnel - Phase ultérieure).
+- [ ] **Navigation**
+    - [ ] Ajout au menu principal / Footer.
+
+---
+
 ## ⚠️ NOTES TECHNIQUES & CONFIGURATION
 
 ### Supabase / Authentification

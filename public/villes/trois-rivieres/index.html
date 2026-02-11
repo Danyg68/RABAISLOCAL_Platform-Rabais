@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Citoyen</title>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #004d80;
+            /* Institutional Blue */
+            --secondary-blue: #0077c8;
+            /* Lighter Blue */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f4f6f8;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 4px solid var(--primary-blue);
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1.ville-nom {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .ville-tagline {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .header-badge {
+            background-color: var(--bg-light);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Section Global */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-blue);
+        }
+
+        /* Welcome */
+        #welcome {
+            background-color: var(--bg-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        #welcome-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        /* News Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--secondary-blue);
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Events Section */
+        #events {
+            background-color: var(--bg-light);
+        }
+
+        .event-item {
+            background: var(--white);
+            padding: 25px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--secondary-blue);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .event-item h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .event-period {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Discover Section */
+        .discover-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .discover-item {
+            position: relative;
+        }
+
+        .discover-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* Economy */
+        #economy {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        #economy .section-title {
+            color: var(--white);
+        }
+
+        #economy .section-title::after {
+            background-color: var(--white);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #economy-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .transparency-notice {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1.ville-nom {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .hero-banner {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div>
+                <h1 id="header-ville" class="ville-nom">Chargement...</h1>
+                <p id="header-slogan" class="ville-tagline"></p>
+            </div>
+            <div class="header-badge">
+                Espace informationnel citoyen
+            </div>
+        </div>
+    </header>
+
+    <div id="hero-image" class="hero-banner" style="display:none;"></div>
+
+    <section id="welcome">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">Bienvenue</h2>
+            <!-- Center override -->
+            <p id="welcome-text">Chargement du message de bienvenue...</p>
+        </div>
+    </section>
+
+    <section id="news-section">
+        <div class="container">
+            <h2 class="section-title">Actualités & Annonces</h2>
+            <div id="news-grid" class="cards-grid">
+                <!-- Data injection point -->
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="container">
+            <h2 class="section-title">Festivals & Grands Événements</h2>
+            <div id="events-list">
+                <!-- Data injection point -->
+            </div>
+        </div>
+    </section>
+
+    <section id="discover">
+        <div class="container">
+            <h2 class="section-title">À Découvrir</h2>
+            <div id="discover-grid" class="discover-grid">
+                <!-- Data injection point -->
+            </div>
+        </div>
+    </section>
+
+    <section id="community">
+        <div class="container">
+            <h2 class="section-title">Vie Communautaire</h2>
+            <div id="community-grid" class="cards-grid">
+                <!-- Data injection point -->
+            </div>
+        </div>
+    </section>
+
+    <section id="economy">
+        <div class="container">
+            <h2 id="economy-title" class="section-title">Économie Locale</h2>
+            <p id="economy-text">Chargement...</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div id="transparency-notice" class="transparency-notice">
+                <!-- Data injection point -->
+            </div>
+            <p style="margin-top: 20px;">&copy; <span id="year"></span> Plateforme RabaisLocal - Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dataFile = 'data.json';
+
+            fetch(dataFile)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Erreur de chargement des données. Veuillez vérifier le fichier data.json.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    populatePage(data);
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    document.body.innerHTML = `<div style='text-align:center; padding:50px; color:red;'><h1>Erreur de chargement</h1><p>${error.message}</p></div>`;
+                });
+
+            // Set current year
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+
+        function populatePage(data) {
+            // Header
+            document.title = `${data.ville || 'Ville'} - Espace Citoyen`;
+            setText('header-ville', data.ville);
+            setText('header-slogan', data.slogan);
+
+            // Hero Image
+            if (data.heroImage) {
+                const heroDiv = document.getElementById('hero-image');
+                heroDiv.style.display = 'block';
+                heroDiv.style.backgroundImage = `url('${data.heroImage}')`;
+            }
+
+            // Welcome
+            setText('welcome-text', data.messageBienvenue);
+
+            // News
+            const newsContainer = document.getElementById('news-grid');
+            if (data.actualites && data.actualites.length > 0) {
+                data.actualites.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+
+                    let imageHtml = '';
+                    if (item.image) {
+                        imageHtml = `<div style="height:150px; background-image:url('${item.image}'); background-size:cover; background-position:center; margin:-20px -20px 15px -20px; border-radius:4px 4px 0 0;"></div>`;
+                    }
+
+                    card.innerHTML = `
+                        ${imageHtml}
+                        <span class="card-date">${formatDate(item.date)}</span>
+                        <h3>${item.titre}</h3>
+                        <p>${item.resume}</p>
+                    `;
+                    // Optional link
+                    if (item.lien && item.lien !== "#") {
+                        card.style.cursor = "pointer";
+                        card.onclick = () => window.location.href = item.lien;
+                    }
+                    newsContainer.appendChild(card);
+                });
+            } else {
+                newsContainer.innerHTML = '<p>Aucune actualité pour le moment.</p>';
+            }
+
+            // Events
+            const eventsContainer = document.getElementById('events-list');
+            if (data.evenements && data.evenements.length > 0) {
+                data.evenements.forEach(event => {
+                    const div = document.createElement('div');
+                    div.className = 'event-item';
+
+                    let imageHtml = '';
+                    if (event.image) {
+                        // Flex layout for event with image
+                        div.style.display = 'flex';
+                        div.style.gap = '20px';
+                        div.style.alignItems = 'start';
+                        // Responsive fix inside js
+                        if (window.innerWidth < 768) div.style.display = 'block';
+
+                        imageHtml = `<div style="flex:0 0 200px; height:150px; background-image:url('${event.image}'); background-size:cover; background-position:center; border-radius:4px; margin-bottom:10px;"></div>`;
+
+                        div.innerHTML = `
+                            ${imageHtml}
+                            <div style="flex:1;">
+                                <h3>${event.titre}</h3>
+                                <span class="event-period">📅 ${event.periode}</span>
+                                <p>${event.description}</p>
+                            </div>
+                        `;
+                    } else {
+                        div.innerHTML = `
+                            <h3>${event.titre}</h3>
+                            <span class="event-period">📅 ${event.periode}</span>
+                            <p>${event.description}</p>
+                        `;
+                    }
+                    div.style.cursor = 'default';
+                    // Optional link for event
+                    if (event.lien && event.lien !== "#") {
+                        div.style.cursor = "pointer";
+                        div.onclick = () => window.location.href = event.lien;
+                        // Add hover effect via js
+                        div.onmouseover = () => div.style.backgroundColor = '#f9f9f9';
+                        div.onmouseout = () => div.style.backgroundColor = 'var(--white)';
+                    }
+                    eventsContainer.appendChild(div);
+                });
+            }
+
+            // Discover
+            const discoverContainer = document.getElementById('discover-grid');
+            if (data.aVisiter && data.aVisiter.length > 0) {
+                data.aVisiter.forEach(place => {
+                    const div = document.createElement('div');
+                    div.className = 'discover-item';
+
+                    let imageHtml = '';
+                    if (place.image) {
+                        imageHtml = `<div style="height:200px; background-image:url('${place.image}'); background-size:cover; background-position:center; margin-bottom:15px; border-radius:4px;"></div>`;
+                    }
+
+                    div.innerHTML = `
+                        ${imageHtml}
+                        <h3>${place.nom}</h3>
+                        <p>${place.description}</p>
+                        ${place.siteWeb ? `<a href="${place.siteWeb}" target="_blank" style="display:inline-block; margin-top:10px; color:var(--primary-blue); text-decoration:none; font-weight:500;">Visiter le site &rarr;</a>` : ''}
+                    `;
+                    discoverContainer.appendChild(div);
+                });
+            }
+
+            // Community
+            const communityContainer = document.getElementById('community-grid');
+            if (data.vieCommunautaire && data.vieCommunautaire.length > 0) {
+                data.vieCommunautaire.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <h3>${item.titre}</h3>
+                        <p>${item.description}</p>
+                    `;
+                    communityContainer.appendChild(card);
+                });
+            } else {
+                document.getElementById('community').style.display = 'none';
+            }
+
+            // Economy
+            if (data.economieLocale) {
+                setText('economy-title', data.economieLocale.titre || "Économie Locale");
+                setText('economy-text', data.economieLocale.texte);
+            }
+
+            // Footer Transparency
+            if (data.footer && data.footer.transparence) {
+                setText('transparency-notice', data.footer.transparence);
+            }
+        }
+
+        function setText(id, text) {
+            const el = document.getElementById(id);
+            if (el && text) el.textContent = text;
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('fr-CA', options);
+        }
+    </script>
+</body>
+
+</html>

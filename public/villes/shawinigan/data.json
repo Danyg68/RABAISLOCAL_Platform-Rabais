@@ -1,0 +1,26 @@
+{
+    "ville": "Shawinigan",
+    "slogan": "Là où l'énergie prend forme",
+    "heroImage": "images/hero.jpg",
+    "messageBienvenue": "Shawinigan est une ville dynamique, fière de son passé industriel et résolument tournée vers l'avenir.",
+    "actualites": [
+        {
+            "titre": "Projet de rénovation urbaine",
+            "resume": "Des travaux majeurs débuteront au centre-ville le 1er mai.",
+            "date": "2026-04-15"
+        }
+    ],
+    "evenements": [
+        {
+            "titre": "Festival de l'Énergie",
+            "periode": "Juillet 2026",
+            "description": "Célébration annuelle de notre héritage énergétique au Parc de l'Île Melville."
+        }
+    ],
+    "aVisiter": [
+        {
+            "nom": "Cité de l'Énergie",
+            "description": "Un complexe muséal unique incluant une centrale hydroélectrique historique."
+        }
+    ]
+}

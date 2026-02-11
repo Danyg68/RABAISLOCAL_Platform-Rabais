@@ -1,0 +1,91 @@
+{
+    "ville": "Trois-Rivières",
+    "slogan": "Une ville vivante, fière et rassembleuse",
+    "heroImage": "images/hero.jpg",
+    "messageBienvenue": "Trois-Rivières est une ville d'histoire et de culture, où la qualité de vie est au cœur de nos priorités. Nous sommes fiers de collaborer avec des initiatives locales comme RabaisLocal. Pour toute information officielle, visitez notre site : <a href='https://www.v3r.net/' target='_blank' style='color:#004d80; font-weight:bold;'>v3r.net</a>.",
+    "actualites": [
+        {
+            "titre": "Avis aux citoyens : Collecte des feuilles",
+            "resume": "La collecte des feuilles mortes débutera le 15 octobre. Consultez le calendrier pour votre secteur.",
+            "date": "2026-10-01",
+            "lien": "#"
+        },
+        {
+            "titre": "Communiqué : Nouveaux aménagements cyclables",
+            "resume": "La ville investit dans 15km de nouvelles pistes cyclables pour favoriser la mobilité active.",
+            "date": "2026-09-20",
+            "lien": "#"
+        },
+        {
+            "titre": "Séance du conseil municipal",
+            "resume": "La prochaine séance publique aura lieu le mardi 6 octobre à 19h à l'hôtel de ville.",
+            "date": "2026-09-15",
+            "lien": "#"
+        }
+    ],
+    "evenements": [
+        {
+            "titre": "Festivoix de Trois-Rivières",
+            "periode": "26 juin - 6 juillet 2026",
+            "description": "L'événement culturel et festif incontournable de la Mauricie ! 9 jours de musique, 350+ artistes, et une ambiance unique au cœur du quartier historique et sur le bord du fleuve.",
+            "image": "images/festivoix.jpg",
+            "lien": "https://festivoix.com"
+        },
+        {
+            "titre": "Série Hommage - Cirque du Soleil",
+            "periode": "Juillet - Août 2026",
+            "description": "Un spectacle exclusif et grandiose créé pour l'Amphithéâtre Cogeco, célébrant les légendes de la musique québécoise.",
+            "image": "images/amphitheatre.jpg",
+            "lien": "https://www.amphitheatrecogeco.com/"
+        },
+        {
+            "titre": "Activités du 400ᵉ anniversaire",
+            "periode": "Toute l'année 2034",
+            "description": "Une programmation exceptionnelle pour célébrer 4 siècles d'histoire.",
+            "image": "images/400e.jpg"
+        }
+    ],
+    "aVisiter": [
+        {
+            "nom": "Amphithéâtre Cogeco",
+            "description": "Une salle de spectacle extérieure de classe mondiale située au confluent de la rivière Saint-Maurice et du fleuve Saint-Laurent. Un joyau architectural à découvrir.",
+            "image": "images/amphitheatre_archi.jpg",
+            "siteWeb": "https://www.amphitheatrecogeco.com/"
+        },
+        {
+            "nom": "Vieux-Trois-Rivières",
+            "description": "Le cœur historique de la ville, avec ses bâtiments d'époque, ses musées, le Manoir Boucher de Niverville et ses galeries d'art. Une promenade inoubliable.",
+            "image": "images/vieux_tr.jpg",
+            "siteWeb": "https://www.tourismetroisrivieres.com/fr/quoi-faire/vieux-trois-rivieres"
+        },
+        {
+            "nom": "Sanctuaire Notre-Dame-du-Cap",
+            "description": "Un lieu de recueillement et de beauté architecturale, accueillant des pèlerins du monde entier dans ses magnifiques jardins sur le bord du fleuve.",
+            "image": "images/sanctuaire.jpg",
+            "siteWeb": "https://www.sanctuaire-ndc.ca/"
+        },
+        {
+            "nom": "Île Saint-Quentin",
+            "description": "Nature et détente à quelques minutes du centre-ville : plage, sentiers, camping et activités familiales au milieu de la rivière Saint-Maurice.",
+            "image": "images/ile_st_quentin.jpg",
+            "siteWeb": "https://www.ilesaintquentin.com/"
+        }
+    ],
+    "vieCommunautaire": [
+        {
+            "titre": "Jardins communautaires",
+            "description": "Inscriptions ouvertes pour la saison 2027. Cultivez vos légumes et tissez des liens avec vos voisins."
+        },
+        {
+            "titre": "Bénévolat : Devenez mentor",
+            "description": "Le programme de mentorat jeunesse recherche des bénévoles pour accompagner les jeunes talents locaux."
+        }
+    ],
+    "economieLocale": {
+        "titre": "Soutenir notre économie locale",
+        "texte": "Nos commerçants et artisans sont le moteur de notre vitalité économique. En choisissant l'achat local, vous contribuez directement à la prospérité de Trois-Rivières et au maintien d'une offre commerciale diversifiée et unique. RabaisLocal offre une vitrine pour découvrir ces richesses."
+    },
+    "footer": {
+        "transparence": "Cette page est une initiative indépendante sur la plateforme RabaisLocal, utilisée comme vitrine informationnelle. Ce n'est pas le site municipal officiel."
+    }
+}
