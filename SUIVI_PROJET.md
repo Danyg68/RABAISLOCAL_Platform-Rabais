@@ -229,14 +229,14 @@ Une tâche barrée (~~Tâche~~) est terminée et validée en production.
     - [x] Migration complète : **Trois-Rivières** (Données en DB)
     - [x] Support technique pour l'export statique (SSG)
 
-### 📦 MODULE 24 : Catalogue & Recherche Villes (À FAIRE)
+### 📦 MODULE 24 : Catalogue & Recherche Villes (EN COURS)
 *Objectif : Permettre aux utilisateurs de trouver leur ville.*
-- [ ] **Page Index `/villes`**
-    - [ ] Liste de toutes les villes disponibles (Grid ou Liste).
-    - [ ] Barre de recherche (Filtrage instantané).
-    - [ ] Carte interactive (Optionnel - Phase ultérieure).
-- [ ] **Navigation**
-    - [ ] Ajout au menu principal / Footer.
+- [x] **Page Index `/villes`**
+    - [x] Liste de toutes les villes disponibles (Grid ou Liste).
+    - [x] Barre de recherche (Filtrage instantané).
+    - [x] Carte interactive (Optionnel - Phase ultérieure).
+- [x] **Navigation**
+    - [x] Ajout au menu principal / Footer.
 
 ---
 

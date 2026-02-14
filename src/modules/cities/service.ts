@@ -50,5 +50,23 @@ export const cityService = {
         }
 
         return data.map((city: { slug: string }) => city.slug);
+    },
+
+    /**
+     * Récupère la liste complète des villes (pour la page index /villes)
+     */
+    async getAllCities(): Promise<City[]> {
+        const supabase = createClient();
+        const { data, error } = await supabase
+            .from('cities')
+            .select('*')
+            .order('name', { ascending: true });
+
+        if (error) {
+            console.error('Error fetching cities:', error);
+            return [];
+        }
+
+        return (data as City[]) || [];
     }
 };
